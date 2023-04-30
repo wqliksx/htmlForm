@@ -303,5 +303,37 @@ def choice(planet_name):
 </html>""".format(planet_name=planet_name, **descriptions[planet])
 
 
+@app.route('/results/<nickname>/<int:level>/<float:rating>')
+def selection_results(nickname: str, level: int, rating: float):
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous">
+    <title>Результаты</title>
+</head>
+<body>
+<div class="container">
+<h1 align="center">Результаты отбора</h1>
+<h2 align="center">Претендетна на участие в миссии {nickname}:</h2>
+<div class="alert alert-success" role="alert">
+    <h3>Поздравляем! Ваш рейтинг после {level} этапа отбора</h3>
+</div>
+<div class="alert alert-light" role="alert">
+    <h3>составляет {rating}!</h3>
+</div>
+<div class="alert alert-warning" role="alert">
+    <h3>Желаем удачи!</h3>
+</div>
+</div>
+</body>
+</html>"""
+
+
 if __name__ == '__main__':
     app.run(port=8080, host="")
